@@ -1,0 +1,73 @@
+@extends('layouts.app')
+
+@section('content')
+<section class="page-content">
+			<div class="login-section p-3 clearfix">
+			<div class="container-fluid">
+				<div class="register">
+                <div class="row">
+                    <div class="col-md-3 register-left">
+						<div class="icon-move">
+							<i class="icon-user"></i>
+						</div>
+                        <h3>User Login</h3>
+                        <p><strong>NOTE:</strong> If you already have an account with us, please login at the</p>
+                        <a href="{{url('login')}}" class="btn btn-outline-secondary">User Login</a>
+						<div class="clearfix"></div>
+						<p class="my-2 p-2 clearfix"> OR  </p>
+						<div class="clearfix"></div>
+						<div class="social-login clearfix">
+							<a class="btn btn-sm social-facebook" href="{{ url('/auth/social/facebook') }}"><i class="fa fa-facebook"></i> Sign up with Facebook</a>
+							<a class="btn btn-sm social-google" href="{{ url('/auth/social/google') }}"><i class="fa fa-google-plus"></i> Sign up with Google+</a>
+						</div>
+                    </div>
+                    <div class="col-md-9 register-right">
+						<h3 class="register-heading">My Account Information</h3>
+
+            <form method="POST" action="{{ url('create_user') }}">
+                @csrf
+                        <div class="row register-form">
+                          @if ($errors->any())
+                              <div class="alert alert-danger col-md-12">
+                                  <ul>
+                                      @foreach ($errors->all() as $error)
+                                          <li>{{ $error }}</li>
+                                      @endforeach
+                                  </ul>
+                              </div>
+                          @endif
+							<div class="col-md-6">
+
+								<div class="form-group">
+									<input type="text" class="form-control" name="first_name" required placeholder="First Name *" value="" />
+								</div>
+								<div class="form-group">
+									<input type="text" class="form-control" name="last_name" required placeholder="Last Name *" value="" />
+								</div>
+                <div class="form-group">
+									<input type="email" class="form-control" name="email" required placeholder="Your Email *" value="" />
+								</div>
+							</div>
+
+							<div class="col-md-6">
+                <div class="form-group">
+                  <input type="password" class="form-control" name="password" required placeholder="Password *" value="" />
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" name="password_confirmation" required  placeholder="Confirm Password *" value="" />
+                </div>
+								<input type="submit" class="btn btn-outline-secondary"  value="Register"/>
+							</div>
+
+
+						</div>
+            </form>
+                    </div>
+                </div>
+				</div>
+				</div>
+			</div>
+        </section>
+
+
+@endsection
