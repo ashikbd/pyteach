@@ -7,15 +7,15 @@
             <div class="row">
                 <div class="col-8 col-md-8 dashbuttons">
                     <div class="row">
-                        <a href="#"><span>Learning Section</span></a>
-                        <a href="#"><span>Statistics</span></a>
-                        <a href="#"><span>Certification</span></a>
-                        <a href="#"><span>Invite Parents</span></a>
+                        <a href="{{url('learning/topics')}}"><span>Learning Section</span></a>
+                        <a href="{{url('students/statistics')}}"><span>Statistics</span></a>
+                        <a href="{{url('students/certificate')}}"><span>Certification</span></a>
+                        <a href="{{url('students/linked_parents')}}"><span>Invite Parents</span></a>
                         <a href="#"><span>Invite Friends</span></a>
                         <a href="#"><span>Resources</span></a>
                         <a href="#"><span>Help</span></a>
                         <a href="#"><span>Update Profile</span></a>
-                        <a href="#"><span>Logout</span></a>
+                        <a href="{{url('logout')}}"><span>Logout</span></a>
                     </div>
                 </div>
                     <div class="col-8 col-md-4">
@@ -34,7 +34,7 @@
                         <div class="overallProgressTitle">Overall Progress</div>
                     </div>
                     <div class="pointsummary">
-                        <div class="pointsummary_title">720/1000
+                        <div class="pointsummary_title">{{ $achieved_points }}/{{$total_points}}
                             <br />Points Earned
                         </div>
                         <div class="pointsummary_chart" id="pointsummary_chart"></div>
@@ -52,13 +52,13 @@
         strokeWidth: 3,
         trailWidth: 1,
         text: {
-            value: '80%'
+            value: '{{$overall_progress}}%'
         }
     });
 
-    circle.animate(0.8);
+    circle.animate({{$overall_progress/100}});
 
-    var pointratio = 720/1000;
+    var pointratio = {{$achieved_points}}/{{$total_points}};
     var pointbar = new ProgressBar.Line('#pointsummary_chart', {
         color: 'green',
         strokeWidth: 12,

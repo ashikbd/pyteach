@@ -29,4 +29,9 @@ class Student extends Authenticatable
     protected $hidden = [
         'password'
     ];
+
+    public function certificate()
+    {
+        return $this->hasOne(Certificate::class);
+    }
 }

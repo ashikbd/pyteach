@@ -12,7 +12,8 @@
     <link rel='stylesheet' type='text/css' href='{{ asset('public/css/style.css') }}'>
     <script type="text/javascript" src="{{ asset('public/plugins/jQuery/jquery.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-    <script src="{{ asset('public/plugins/sweetalert/sweetalert.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!--<script src="{{ asset('public/plugins/sweetalert/sweetalert.min.js') }}"></script>-->
     <!--<script src="scripts/script.js" defer></script>-->
 </head>
 
@@ -29,6 +30,8 @@
                 <ul class="navbar-nav ms-auto">
                     @if(Auth::guard('students')->check())
                         @include('layouts.nav_student')
+                    @elseif(Auth::guard('parents')->check())
+                        @include('layouts.nav_parent')
                     @else
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="{{url('')}}">Home</a>

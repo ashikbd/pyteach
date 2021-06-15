@@ -22,9 +22,9 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>0</h3>
+              <h3>{{$total_topics}}</h3>
 
-              <p>Learning</p>
+              <p>Learning Modules</p>
             </div>
             <div class="icon">
               <i class="ion ion-document"></i>
@@ -37,9 +37,9 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>0</h3>
+              <h3>{{$total_students}}</h3>
 
-              <p>Students</p>
+              <p>Students registered</p>
             </div>
             <div class="icon">
               <i class="ion ion-person"></i>
@@ -52,9 +52,9 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>0</h3>
+              <h3>{{$total_parents}}</h3>
 
-              <p>Parents</p>
+              <p>Parents registered</p>
             </div>
             <div class="icon">
               <i class="ion ion-person"></i>

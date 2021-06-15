@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Invitation;
 use Mail;
 use App\Student;
 use App\Parents;
@@ -56,7 +57,7 @@ class RegisterController extends Controller
                 'firstName' => ['required', 'string', 'max:255'],
                 'lastName' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:parent'],
-                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'password' => ['required', 'string', 'min:6'],
             ]);
         }else{
             return Validator::make($data, [
@@ -80,13 +81,14 @@ class RegisterController extends Controller
             return Parents::create([
                 'firstName' => $data['firstName'],
                 'lastName' => $data['lastName'],
-                'mobile' => $data['mobile'],
+                'mobile' => isset($data['mobile'])?$data['mobile']:"",
                 'email' => $data['email'],
                 'status' => 1,
                 'password' => Hash::make($data['password']),
             ]);
         }else{
-            return Student::create([
+
+            $id = Student::create([
                 'firstName' => $data['firstName'],
                 'lastName' => $data['lastName'],
                 'dateOfBirth' => date("Y-m-d",strtotime($data['dateOfBirth'])),
@@ -94,6 +96,15 @@ class RegisterController extends Controller
                 'status' => 1,
                 'password' => Hash::make($data['password']),
             ]);
+
+            if($data['parentEmail']){
+                $inv = new Invitation();
+                $inv->email = $data['parentEmail'];
+                $inv->student_id = $id->id;
+                $inv->save();
+            }
+
+            return $id;
         }
 
     }

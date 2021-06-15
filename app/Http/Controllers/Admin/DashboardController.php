@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Students;
+use App\Parents;
+use App\Student;
+use App\Topic;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
@@ -29,6 +33,9 @@ class DashboardController extends Controller
       $data = [];
 
 	  //return Auth::user()->id;
+      $data['total_topics'] = Topic::count();
+        $data['total_students'] = Student::count();
+        $data['total_parents'] = Parents::count();
       return view('admin/dashboard', $data);
 
     }

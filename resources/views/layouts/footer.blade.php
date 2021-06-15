@@ -44,7 +44,7 @@
 
 @if(session('success'))
 <script>
-swal(
+Swal.fire(
     '{{session('success')}}',
     '',
     'success'
@@ -54,7 +54,7 @@ swal(
 
 @if(session('error'))
 <script>
-    swal(
+    Swal.fire(
         '{{session('error')}}',
         '',
         'error'
