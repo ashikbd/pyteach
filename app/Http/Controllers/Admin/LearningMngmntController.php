@@ -222,7 +222,7 @@ class LearningMngmntController extends Controller
             $practice->position = $request->position;
             $practice->save();
 
-            return redirect('admin/learning/topic_practice/'.$request->topic_id)->with('success_message', 'Practice slide successfully updated!');
+            return redirect('admin/learning/topic_practice/'.$practice->topic_id)->with('success_message', 'Practice slide successfully updated!');
         }
     }
 
@@ -348,6 +348,13 @@ class LearningMngmntController extends Controller
             $quiz->quiz_answer()->delete();
             $quiz->delete();
             return redirect('admin/learning/topic_quiz/'.$topic_id)->with('success_message', 'Quiz successfully deleted!');
+        }
+    }
+
+    public function topic_practice_delete(Request $request){
+        if($request->id){
+            $p = Practice::find($request->id)->delete();
+            return redirect('admin/learning/topic_practice/'.$p->topic_id)->with('success_message', 'Practice successfully deleted!');
         }
     }
 }

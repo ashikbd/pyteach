@@ -34,6 +34,7 @@ Route::get('/parents/unlink_student/{id}', '\App\Http\Controllers\ParentControll
 Route::get('/parents/student_certificate/{id}', '\App\Http\Controllers\ParentController@student_certificate');
 Route::get('/students/statistics', '\App\Http\Controllers\Students@statistics');
 Route::get('/parents/student_statistics/{id}', '\App\Http\Controllers\ParentController@student_statistics');
+Route::post('/students/send_invitation', '\App\Http\Controllers\Students@send_invitation');
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'before' => 'admin'], function()
 {
@@ -53,6 +54,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'before' => 'admin'],
     Route::get('learning/topic_practice_edit/{id}', 'LearningMngmntController@topic_practice_edit');
     Route::post('learning/practice_save', 'LearningMngmntController@practice_save');
     Route::post('learning/practice_update', 'LearningMngmntController@practice_update');
+    Route::post('learning/topic_practice_delete','LearningMngmntController@topic_practice_delete');
     Route::get('learning/topic_quiz/{id}', 'LearningMngmntController@topic_quiz');
     Route::get('learning/topic_quiz_add/{id}', 'LearningMngmntController@topic_quiz_add');
     Route::post('learning/quiz_save', 'LearningMngmntController@quiz_save');

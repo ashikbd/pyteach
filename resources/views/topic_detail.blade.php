@@ -260,6 +260,8 @@
                    var page = $(this).data('page');
                    change_slide(page,$(this));
                }
+
+
             });
 
             function change_slide(page,el){
@@ -287,7 +289,8 @@
                             "type": ptype,
                             "id": id
                         }
-                    })
+                    });
+
                 }
             }
 
@@ -356,6 +359,8 @@
                         }
                     });
                 });
+
+
             });
         </script>
 

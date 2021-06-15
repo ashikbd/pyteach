@@ -46,4 +46,14 @@ class Students extends Controller
         $data['total_points'] = get_total_point();
         return view('statistics', $data);
     }
+
+    public function send_invitation(Request $request){
+        if($request->parent_email){
+          $inv = new Invitation();
+          $inv->email = $request->parent_email;
+          $inv->student_id = Auth::id();
+          $inv->save();
+          echo "ok";
+        }
+    }
 }
