@@ -61,4 +61,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'before' => 'admin'],
     Route::get('learning/topic_quiz_edit/{id}', 'LearningMngmntController@topic_quiz_edit');
     Route::post('learning/quiz_update', 'LearningMngmntController@quiz_update');
     Route::post('learning/topic_quiz_delete','LearningMngmntController@topic_quiz_delete');
+    Route::get('students', 'StudentsController@index');
+    Route::get('parents', 'ParentsController@index');
 });

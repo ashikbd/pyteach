@@ -138,7 +138,7 @@
                                         <label class="form-check-label" for="answer_fill_gap">
                                             Write Answer:
                                         </label>
-                                        <input class="form-control" name="answer_fill_gap" id="answer_fill_gap" @if($qans) disabled="disabled" @endif value="@if(isset($qans[0])) {{$qans[0]}} @endif" />
+                                        <input class="form-control" name="options[{{$row['id']}}]" @if($qans) disabled="disabled" @endif value="@if(isset($qans[0])) {{$qans[0]}} @endif" />
                                     </div>
                                 @endif
 

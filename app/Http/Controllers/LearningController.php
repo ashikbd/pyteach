@@ -95,6 +95,7 @@ class LearningController extends Controller
             if(is_array($ans)){
                 $ans_json = json_encode($ans);
             }else{
+                if(!$ans) continue;
                 $ans_json = json_encode(array($ans));
             }
 
@@ -107,8 +108,9 @@ class LearningController extends Controller
             $progress_quiz->point = $your_point;
             $progress_quiz->save();
 
-            echo 'ok';
+
         }
+        echo 'ok';
     }
 
     public function save_progress(Request $request){
