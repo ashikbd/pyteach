@@ -1,6 +1,6 @@
 ## About PyTeach
 
-We developed this web application for our final year project in Flinders University. The goal of the project was to develop a web based self learning platform for kids to lear Python Programming language.
+We developed this web application for our final year project of MS IT course in Flinders University. The goal of the project was to develop a web based self learning platform for kids to learn Python Programming language.
 
 ## Key Features
 
